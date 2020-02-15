@@ -1,4 +1,4 @@
-package com.eicon.project.model;
+package com.eicon.project.model.entity;
 
 import java.util.Date;
 
@@ -8,28 +8,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Table( name = Produto.TABLE_NAME, schema = "public" )
 @Entity
 public class Produto {
 	
 	public static final String TABLE_NAME = "tb_produto";	
+	public static final int QTD_DEFAULT = 1;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "gen_id_produto")
-	@SequenceGenerator(name = "gen_id_produto", sequenceName = "sq_tb_produto")
+	@SequenceGenerator(name = "gen_id_produto", sequenceName = "sq_tb_produto", initialValue = 1, allocationSize = 1)
 	private Long idProduto;
 	
+	@NotNull(message = "Favor informar o numero de controle do produto")
 	private Long numeroControle;
 	
 	private Date dataCadastro;
 	
+	@NotEmpty
 	private String nomeProduto;
 	
-	private Float valorProduto;
+	@NotNull(message = "Favor informar o valor do produto.")
+	private Double valorProduto;
+	
+	private Double valorTotal;
 	
 	private Integer quantidadeProduto;
 	
+	@NotNull(message = "Favor informar o codigo do cliente.")
 	private Integer codigoCliente;
 
 
@@ -66,12 +75,20 @@ public class Produto {
 		this.nomeProduto = nomeProduto;
 	}
 
-	public Float getValorProduto() {
+	public Double getValorProduto() {
 		return valorProduto;
 	}
 
-	public void setValorProduto(Float valorProduto) {
+	public void setValorProduto(Double valorProduto) {
 		this.valorProduto = valorProduto;
+	}
+
+	public Double getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 
 	public Integer getQuantidadeProduto() {

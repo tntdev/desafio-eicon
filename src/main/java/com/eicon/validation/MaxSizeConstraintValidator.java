@@ -5,7 +5,7 @@ import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.eicon.project.model.Produto;
+import com.eicon.project.model.entity.Produto;
 
 public class MaxSizeConstraintValidator implements ConstraintValidator<MaxSizeConstraint, List<Produto> > {
 

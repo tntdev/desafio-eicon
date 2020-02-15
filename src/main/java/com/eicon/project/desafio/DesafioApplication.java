@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@EnableJpaRepositories("com.eicon.project.repository")
-@EntityScan("com.eicon.project.model")
-@ComponentScan(basePackages = {"com.eicon.project.controller"})
+@EnableJpaRepositories("com.eicon.project.model.repository")
+@EntityScan("com.eicon.project.model.entity")
+@ComponentScan(basePackages = {"com.eicon.project.controller", "com.eicon.project.service"})
 @SpringBootApplication
 public class DesafioApplication {
 
