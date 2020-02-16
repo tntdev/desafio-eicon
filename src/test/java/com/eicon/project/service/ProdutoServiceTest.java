@@ -2,8 +2,6 @@ package com.eicon.project.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Date;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -54,7 +52,6 @@ public class ProdutoServiceTest {
 		Produto produto = new Produto();
 		
 		produto.setCodigoCliente(132);
-		produto.setDataCadastro(new Date() );
 		produto.setNomeProduto("ProdutoTeste");
 		produto.setNumeroControle(6575252L);
 		produto.setQuantidadeProduto(3);

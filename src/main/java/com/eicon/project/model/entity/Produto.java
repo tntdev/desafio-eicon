@@ -1,7 +1,9 @@
 package com.eicon.project.model.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +12,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters.LocalDateConverter;
 
 @Table( name = Produto.TABLE_NAME, schema = "public" )
 @Entity
@@ -23,12 +27,14 @@ public class Produto {
 	@SequenceGenerator(name = "gen_id_produto", sequenceName = "sq_tb_produto", initialValue = 1, allocationSize = 1)
 	private Long idProduto;
 	
-	@NotNull(message = "Favor informar o numero de controle do produto")
+	@NotNull(message = "Favor informar o numero de controle do produto.")
 	private Long numeroControle;
 	
-	private Date dataCadastro;
+	@Column
+	@Convert(converter = LocalDateConverter.class)
+	private LocalDate dataCadastro;
 	
-	@NotEmpty
+	@NotEmpty(message = "Favor informar o nome do produto.")
 	private String nomeProduto;
 	
 	@NotNull(message = "Favor informar o valor do produto.")
@@ -59,11 +65,11 @@ public class Produto {
 		this.numeroControle = numeroControle;
 	}
 
-	public Date getDataCadastro() {
+	public LocalDate getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(Date dataCadastro) {
+	public void setDataCadastro(LocalDate dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 

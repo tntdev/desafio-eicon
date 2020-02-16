@@ -1,6 +1,8 @@
 package com.eicon.project.service.impl;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,10 +26,10 @@ public class ProdutoServiceImpl implements ProdutoService {
 	}
 	
 	@Override
-	public Produto salvarProduto(Produto produto) {
+	public Produto salvarProduto(Produto produto){
 
 		try {
-						
+			
 			if(produto.getQuantidadeProduto() == null)
 				produto.setQuantidadeProduto(Produto.QTD_DEFAULT);
 			else
@@ -43,7 +45,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 			produto.setValorTotal(valorTotal);
 			
 			produto.setNumeroControle(produto.getNumeroControle());
-			produto.setDataCadastro(produto.getDataCadastro() == null ? new Date() : produto.getDataCadastro()); 
+			produto.setDataCadastro(produto.getDataCadastro() == null ? LocalDate.now() : produto.getDataCadastro()); 
 			produto.setNomeProduto(produto.getNomeProduto());
 			produto.setCodigoCliente(produto.getCodigoCliente());
 			
@@ -73,5 +75,25 @@ public class ProdutoServiceImpl implements ProdutoService {
 		return valorTotal;
 	}
 	
+	@Override
+	public List<Produto> recuperaProduto(Long numeroControle, LocalDate dataCadastro, Integer codigoCliente, Boolean todos) {
+		
+		List<Produto> produtos = new ArrayList<Produto>();
+		
+		if(todos)
+			produtos = produtoRepository.findAll();
+		else
+			if(numeroControle != null || dataCadastro != null || codigoCliente != null)
+				produtos = produtoRepository.recuperaProdutoPorParametros(numeroControle, dataCadastro, codigoCliente);
+		
+		return produtos;
+	
+	}
+	
+	
+	@Override
+	public boolean isProdutoExistente(Long numeroControle) {
+		return produtoRepository.existsByNumeroControle(numeroControle);				
+	}
 
 }
