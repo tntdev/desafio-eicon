@@ -18,7 +18,7 @@ import javax.validation.Payload;
 @Documented
 public @interface MaxSizeConstraint {
 
-	String message() default "A lista informada nao deve conter mais que 10 produtos.";
+	String message() default "A lista informada não deve conter mais que 10 produtos.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

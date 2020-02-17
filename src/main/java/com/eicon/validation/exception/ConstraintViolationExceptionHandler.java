@@ -22,13 +22,13 @@ public class ConstraintViolationExceptionHandler extends ResponseEntityException
 	 
 	@ExceptionHandler(NoSuchElementException.class)
 	public ResponseEntity<String> acceptNoSuchElementException(final NoSuchElementException ex) {
-		  return new ResponseEntity<>("Produto nao encontrado.", NOT_FOUND);
+		  return new ResponseEntity<>("Produto não encontrado.", NOT_FOUND);
     }
 	
 	@ExceptionHandler(DuplicateNumeroControleException.class)
     public ResponseEntity<String> customHandleNotFound(Exception ex, WebRequest request) {
 
-		return new ResponseEntity<>("A requisicao contem produtos com numero de controle ja cadastrados.", NOT_ACCEPTABLE);
+		return new ResponseEntity<>("A requisição contém um ou mais produtos com o número de controle já cadastrados.", NOT_ACCEPTABLE);
 
     }
 	

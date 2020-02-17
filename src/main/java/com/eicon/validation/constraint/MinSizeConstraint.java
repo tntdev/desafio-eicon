@@ -18,7 +18,7 @@ import javax.validation.Payload;
 @Documented
 public @interface MinSizeConstraint {
 
-	String message() default "A lista informada deve contem ao menos 1 produto.";
+	String message() default "A lista informada deve conter ao menos 1 produto.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

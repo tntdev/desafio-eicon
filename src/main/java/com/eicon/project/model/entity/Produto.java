@@ -26,7 +26,7 @@ public class Produto {
 	@SequenceGenerator(name = "gen_id_produto", sequenceName = "sq_tb_produto", initialValue = 1, allocationSize = 1)
 	private Long idProduto;
 	
-	@NotNull(message = "Favor informar o numero de controle do produto.")
+	@NotNull(message = "Favor informar o número de controle do produto.")
 	private Long numeroControle;
 	
 	@Convert(converter = LocalDateConverter.class)
@@ -42,7 +42,7 @@ public class Produto {
 	
 	private Integer quantidadeProduto;
 	
-	@NotNull(message = "Favor informar o codigo do cliente.")
+	@NotNull(message = "Favor informar o código do cliente.")
 	private Integer codigoCliente;
 
 
