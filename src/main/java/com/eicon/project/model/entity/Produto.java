@@ -2,7 +2,6 @@ package com.eicon.project.model.entity;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +29,6 @@ public class Produto {
 	@NotNull(message = "Favor informar o numero de controle do produto.")
 	private Long numeroControle;
 	
-	@Column
 	@Convert(converter = LocalDateConverter.class)
 	private LocalDate dataCadastro;
 	
